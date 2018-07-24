@@ -27,14 +27,11 @@ function getPairsCount(arr, sum) {
 	}
 	let twice_count = 0;
 	for(let i=0; i<arr.length; i++) {
-		if(hashMap[sum-arr[i]]) {
-			console.log('hashMap[sum-arr[i]] : ', arr[i]);
-			twice_count += hashMap[sum-arr[i]];
-		}
+		twice_count += hashMap[sum-arr[i]] || 0;
 		if(sum-arr[i] === arr[i]) twice_count--;
 	}
 
 	return twice_count/2;
 }
 
-module.exports = findThreeNumbers;
+module.exports = { findThreeNumbers, getPairsCount };
