@@ -57,8 +57,8 @@ function jobs(arr) {
 	function dependencyResolve(node, resolved) {
 
 		if (typeof node !== 'object') {
-	    node = jobList[node.toString()];
-	  }
+			node = jobList[node.toString()];
+		}
 
 		for(let edge of jobList[node.name].edges) {
 			if(!resolved.includes(edge)) {
@@ -67,7 +67,7 @@ function jobs(arr) {
 		}
 
 		if(!resolved.includes(node)) {
-	    resolved.push(node);
+			resolved.push(node);
 	  }
 	}
 
