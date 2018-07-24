@@ -18,10 +18,10 @@ function jobs(arr) {
 
 	//joblist is the array list translated into an object, jobsCheckedOff is an array to check for circular elements
 	let jobList = {};
-	let jobsCheckedOff = []; //a list to use to check for circular
+	let jobsCheckedOff = [];
 
 	//generate the jobList
-  for(let pair of arr) {
+	for(let pair of arr) {
 
 		if(!jobList.hasOwnProperty(pair[0])) {
 			jobList[pair[0]] = new Node(pair[0]);
@@ -43,7 +43,7 @@ function jobs(arr) {
 	dependencyResolve(jobList[arr[0][0]], resolved);
 
 	//print out jobs in proper execution order
-  console.log('\n', 'Printing out jobs in order of dependency resolution', '\n');
+	console.log('\n', 'Printing out jobs in order of dependency resolution', '\n');
 
 	let jobExecutionOrder = [];
 	for(let node of resolved) {
