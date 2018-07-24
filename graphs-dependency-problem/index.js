@@ -34,25 +34,26 @@ function jobs(arr) {
 
 	}
 
-	//fix this and make it a proper error
-	if(checkForCircular(jobsCheckedOff)) return 'Circular reference detected';
+	//check for circular error
+	if(checkForCircular(jobsCheckedOff)) throw new Error('Circular reference detected') ;
 
 	let resolved = [];
-	let unresolved = [];
 
+	//use dependencyResolve function to create proper job order in resolved array
 	dependencyResolve(jobList[arr[0][0]], resolved);
 
+	//print out jobs in proper execution order
   console.log('\n', 'Printing out jobs in order of dependency resolution', '\n');
 
-	let returnThis = [];
+	let jobExecutionOrder = [];
 	for(let node of resolved) {
-		returnThis.push(node.name);
+		jobExecutionOrder.push(node.name);
 		console.log(node.name);
 	}
 
-	return returnThis;
+	return jobExecutionOrder;
 
-
+	//first of two inner functions
 	function dependencyResolve(node, resolved) {
 
 		if (typeof node !== 'object') {
@@ -61,7 +62,7 @@ function jobs(arr) {
 
 		for(let edge of jobList[node.name].edges) {
 			if(!resolved.includes(edge)) {
-				dependencyResolve(edge, resolved, unresolved);
+				dependencyResolve(edge, resolved);
 			}
 		}
 
@@ -70,6 +71,7 @@ function jobs(arr) {
 	  }
 	}
 
+	//second of two inner functions
 	function checkForCircular(arr) {
 		for(let elem of arr) {
 			let reversed = elem[1] + elem[0];

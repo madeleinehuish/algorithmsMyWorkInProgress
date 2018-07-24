@@ -1,4 +1,5 @@
 //find three numbers in array that sum to zero and console out the findThreeNumbers
+//this can also be used to find a sum for two numbers (without the third loop and third number)
 
 function findThreeNumbers(arr) {
 	let found = false;
