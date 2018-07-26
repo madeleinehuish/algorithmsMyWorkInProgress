@@ -10,55 +10,55 @@
 
 
 // // //this solution takes a bit more work than the simple one at very bottom
-// function anagrams(stringA, stringB) {
-// 	let charMapA = {};
-// 	let charMapB = {};
-//
-// 	for (let char of stringA) {                     //can also use a split('').forEach()
-// 		charMapA[char] = (charMapA[char] || 0) + 1;
-// 	}
-//
-// 	for (let char of stringB) {
-// 		charMapB[char] = (charMapB[char] || 0) + 1;
-// 	}
-//
-// 	if (Object.keys(charMapA).length !== Object.keys(charMapB).length) {
-// 	    return false;
-// 	  }
-//
-// 	for (let char in charMapA) {
-// 		if (charMapA[char] !== charMapB[char]) {
-// 			return false;
-// 		}
-// 	}
-//
-// 	return true;
-// }
-
-function anagrams(str1, str2) {
+function anagrams(stringA, stringB) {
 	let charMapA = {};
 	let charMapB = {};
 
-	str1.split('').forEach(char => {
+	for (let char of stringA) {                     //can also use a split('').forEach()
 		charMapA[char] = (charMapA[char] || 0) + 1;
-	})
-
-	str2.split('').forEach(char => {
-		charMapB[char] = (charMapB[char] || 0) + 1;
-	})
-
-	if(Object.keys(charMapA).length !== Object.keys(charMapB).length) {
-		return false;
 	}
 
-	for(let char in charMapA) {
-		if(charMapA[char] !== charMapB[char]) {
+	for (let char of stringB) {
+		charMapB[char] = (charMapB[char] || 0) + 1;
+	}
+
+	if (Object.keys(charMapA).length !== Object.keys(charMapB).length) {
+	    return false;
+	  }
+
+	for (let char in charMapA) {
+		if (charMapA[char] !== charMapB[char]) {
 			return false;
 		}
 	}
 
 	return true;
 }
+
+// function anagrams(str1, str2) {
+// 	let charMapA = {};
+// 	let charMapB = {};
+//
+// 	str1.split('').forEach(char => {
+// 		charMapA[char] = (charMapA[char] || 0) + 1;
+// 	})
+//
+// 	str2.split('').forEach(char => {
+// 		charMapB[char] = (charMapB[char] || 0) + 1;
+// 	})
+//
+// 	if(Object.keys(charMapA).length !== Object.keys(charMapB).length) {
+// 		return false;
+// 	}
+//
+// 	for(let char in charMapA) {
+// 		if(charMapA[char] !== charMapB[char]) {
+// 			return false;
+// 		}
+// 	}
+//
+// 	return true;
+// }
 
 // function anagrams(stringA, stringB) {
 // 	let check1 = stringA.split('').sort().join('');
