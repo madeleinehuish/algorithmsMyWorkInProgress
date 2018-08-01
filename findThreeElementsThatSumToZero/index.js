@@ -19,19 +19,37 @@ function findThreeNumbers(arr) {
 }
 
 
-//find how many pairs add up to sum given one array, this is an O(n) solution unlike above...
-function getPairsCount(arr, sum) {
-	let hashMap = {};
-	for(let i=0; i < arr.length; i++) {
-		hashMap[arr[i]] = (hashMap[arr[i]] || 0) + 1;
-	}
-	let twice_count = 0;
-	for(let i=0; i<arr.length; i++) {
-		twice_count += hashMap[sum-arr[i]] || 0;
-		if(sum-arr[i] === arr[i]) twice_count--;
-	}
+// //find how many pairs add up to sum given one array, this is an O(n) solution unlike above...
+// function getPairsCount(arr, sum) {
+// 	let hashMap = {};
+// 	for(let i=0; i < arr.length; i++) {
+// 		hashMap[arr[i]] = (hashMap[arr[i]] || 0) + 1;
+// 	}
+// 	let twice_count = 0;
+// 	for(let i=0; i<arr.length; i++) {
+// 		twice_count += hashMap[sum-arr[i]] || 0;
+// 		if(sum-arr[i] === arr[i]) twice_count--;
+// 	}
+//
+// 	return twice_count/2;
+// }
 
-	return twice_count/2;
+//this version strips duplicates
+function getPairsCount(arr, sum) {
+	//strip duplicates
+	let newArr = [...new Set(arr)];
+	//start get pairs count functionality
+	let hashMap = {};
+	let count = 0;
+	for(let i=0; i < newArr.length; i++) {
+		hashMap[newArr[i]] = (hashMap[newArr[i]] || 0) + 1;
+	}
+	for(let i=0; i < newArr.length; i++) {
+		if(hashMap[sum - newArr[i]]) count++;
+		//for duplicate values
+		// if(sum - arr[i] === arr[i]) count--;
+	}
+	return count/2;
 }
 
 module.exports = { findThreeNumbers, getPairsCount };

@@ -19,20 +19,20 @@
 // 	return amountOfVowels;
 // }
 
-// // //stephen's easy solution
-// function vowels(str) {
-// 	let checker = ['a', 'e', 'i', 'o', 'u'];
-// 	let count = 0;
-// 	for(let char of str.toLowerCase()) {
-// 		if(checker.includes(char)) count++;
-// 	}
-// 	return count;
-// }
-
-// //regex solution
+// //stephen's easy solution
 function vowels(str) {
-	const matches = str.match(/[aeiou]/gi);
-	return matches ? matches.length : 0;
+	let checker = ['a', 'e', 'i', 'o', 'u'];
+	let count = 0;
+	for(let char of str.toLowerCase()) {
+		if(checker.includes(char)) count++;
+	}
+	return count;
 }
+
+// // //regex solution
+// function vowels(str) {
+// 	const matches = str.match(/[aeiou]/gi);
+// 	return matches ? matches.length : 0;
+// }
 
 module.exports = vowels;

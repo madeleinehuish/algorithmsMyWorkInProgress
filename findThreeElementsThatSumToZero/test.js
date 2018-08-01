@@ -33,5 +33,5 @@ test('findThreeNumbers correctly sees when array does not have 3 values that sum
 });
 
 test('getPairsCount correctly returns proper value', () => {
-  expect(getPairsCount([1, 5, 6, 0, 12, -6], 6)).toEqual(3);
+  expect(getPairsCount([1, 5, 6, 0, 12, -6, -6], 6)).toEqual(3);
 });

@@ -20,8 +20,8 @@ function matrix(n) {
 	let results = [];
 	for (let i = 0; i < n; i++) {
     results.push([]);
-		// results[i] = [];
   }
+	console.log('results: ', results);
 	let counter = 1;
 	let startColumn=0;
 	let endColumn = n-1;
