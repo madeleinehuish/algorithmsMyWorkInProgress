@@ -37,14 +37,14 @@ class Node {
 		}
 	}
 
-	contains(data) {
-		if (this.data === data) {
+	contains(value) {
+		if (this.data === value) {
 			return this;
 		}
-		if (data < this.data && this.left) {
-			return this.left.contains(data);
-		} else if (data > this.data && this.right) {
-			return this.right.contains(data);
+		if (value < this.data && this.left) {
+			return this.left.contains(value);
+		} else if (value > this.data && this.right) {
+			return this.right.contains(value);
 		}
 
 		return null;

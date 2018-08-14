@@ -86,7 +86,7 @@ function jobs(arr) {
 
 
 
-module.exports = { Node, jobs};
+module.exports = { Node, jobs };
 
 
 

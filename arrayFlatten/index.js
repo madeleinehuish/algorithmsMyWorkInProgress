@@ -27,5 +27,24 @@ function flatten3(arr) {
 	}, [])
 }
 
+//this one handles multiple levels deep
+function flatten3d(arr) {
+    let newArr =[];
+    for(let sub of arr) {
+        if(Array.isArray(sub)) {
+             newArr = newArr.concat(flatten3d(sub));
+        }else newArr = newArr.concat(sub);
+    }
+		// console.log('newArr: ', newArr);
+    return newArr;
+}
 
-module.exports = { flatten, flatten2, flatten3 };
+
+module.exports = { flatten, flatten2, flatten3, flatten3d };
+
+
+
+
+
+// console.log(flatten(arr)) //=> [1, 3, 2, 4, 6, 8, 7, 5, 9]
+// [1, 3, 2, ]

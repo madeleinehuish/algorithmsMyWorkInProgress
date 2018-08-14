@@ -84,13 +84,13 @@ function areThereAnyDupes(arr) {
   return false;
 }
 
-//find last repeating character in string
-function findLastRepeatingCharacter(str) {
+//find last repeating character in string (this should be a string converted to array due to reverse method in function)
+function findLastRepeatingCharacter(arr) {
   let counts = {};
-  for(let char of str) {
+  for(let char of arr) {
     counts[char] = (counts[char] || 0) + 1;
   }
-  for(let char of str.reverse()) {
+  for(let char of arr.reverse()) {
     if (counts[char] > 1) {
       return char;
     }
@@ -118,7 +118,7 @@ function findFirstNonRepeatingCharacter(str) {
   return null;
 }
 
-function findLastNonRepeatingCharacter(str) {
+function findLastNonRepeatingCharacter(str) { //this one actually takes an array. strings don't have a reverse method
   let counts = {};
   for(let char of str) {
     counts[char] = (counts[char] || 0) + 1;

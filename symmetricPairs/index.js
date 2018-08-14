@@ -1,5 +1,5 @@
 
-// //find correct amount of symmetric pairs in given array
+// //find correct pairs of symmetric pairs in given array and return an array of those pairs
 
 function symmetricPairs(arr) {
 	let pairMap = {};
@@ -11,10 +11,12 @@ function symmetricPairs(arr) {
 		let second = arr[i][1];
 
 		if(pairMap[second] && pairMap[second] === first) {
+			console.log('second, first: ', second, first);
 			solution.push([second, first]);
 			// count++;
 		} else {
 			pairMap[first] = second;
+			console.log("pairMap[first] = second", first, second);
 		}
 	}
 
