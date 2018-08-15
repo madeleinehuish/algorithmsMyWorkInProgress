@@ -18,7 +18,7 @@ class FunctionQueue {
 		let functionArray = this.queue.keys();
 
 		for(let f of functionArray) {
-			f(value);
+			if(this.queue.get(f)==='enabled') f(value);
 		}
 	}
 }
@@ -36,4 +36,6 @@ const fn2 = (value) => {
 
 fg.add(fn1);
 fg.add(fn2);
+fg.fire('Madeleine');
+fg.disable(fn1);
 fg.fire('Madeleine');
