@@ -14,11 +14,11 @@
 // });
 
 
+//tests are still a work in progress. I have the basic test cases working in the browser and node so far
 
+const { FunctionQueue } = require('./index');
 
-const { FunctionGenerator } = require('./index');
-
-const fnGenerator = new FunctionGenerator();
+const fnQ = new FunctionQueue();
 
 const fn1 = (value) => {
   console.log(value);
@@ -28,8 +28,8 @@ const fn2 = (value) => {
   console.log('value is ', value);
 }
 
-fnGenerator.add(fn1);
-fnGenerator.add(fn2);
+fnQ.add(fn1);
+fnQ.add(fn2);
 
 beforeEach(() => {
   jest.spyOn(console, 'log');
