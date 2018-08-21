@@ -9,6 +9,8 @@
 
 //next try out binomial heap and fibonacci heap
 
+//this code was inspired by https://www.youtube.com/watch?v=dM_JHpfFITs. I re-implemented in modern class format with notes and tests
+
 class MaxHeap {
 
   constructor() {
