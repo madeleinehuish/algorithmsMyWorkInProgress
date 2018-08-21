@@ -56,8 +56,6 @@ function returnArrOfAllDuplicates(arr) {
   let charMap = {};
   for(let char of arr) {
     charMap[char] = (charMap[char] || 0) + 1;
-  }
-  for(let char in charMap) {
     if(charMap[char] > 1) arrOfDupes.push(char);
   }
   return arrOfDupes;

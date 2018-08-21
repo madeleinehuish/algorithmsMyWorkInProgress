@@ -12,14 +12,14 @@ let solution1 = [[1,2], [8, 9]];
 let solution2 = [[1,2]];
 let solution3 = [];
 
-test('symmetricPairs successfully finds correct symmetric pairs in given array', () => {
+test('symmetricPairs successfully finds symmetric pairs in given array', () => {
   expect(symmetricPairs(testArr1)).toEqual(solution1);
 });
 
-test('symmetricPairs successfully finds correct symmetric pairs in given array', () => {
+test('symmetricPairs successfully finds symmetric pairs in given array', () => {
   expect(symmetricPairs(testArr2)).toEqual(solution2);
 });
 
-test('symmetricPairs successfully finds correct symmetric pairs in given array', () => {
+test('symmetricPairs successfully finds symmetric pairs in given array', () => {
   expect(symmetricPairs(testArr3)).toEqual(solution3);
 });

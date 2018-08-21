@@ -1,3 +1,5 @@
+
+//these first three flatten functions only work for 2d arrays
 //using spread operator
 function flatten(arr) {
 	let newArr =[];
@@ -27,13 +29,14 @@ function flatten3(arr) {
 	}, [])
 }
 
-//this one handles multiple levels deep
+/////multiple
+//this one handles multiple levels deep with recursion
 function flatten3d(arr) {
     let newArr =[];
     for(let sub of arr) {
         if(Array.isArray(sub)) {
              newArr = newArr.concat(flatten3d(sub));
-        }else newArr = newArr.concat(sub);
+        } else newArr = newArr.concat(sub);
     }
 		// console.log('newArr: ', newArr);
     return newArr;

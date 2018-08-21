@@ -3,6 +3,8 @@
 
 //Look under Divide and Conquer for Quicksort!!!!
 
+//look up insertion sort, radix sort, heap sort
+
 function bubbleSort(arr) {
 	for(let i=0; i < arr.length; i++) {
 		for(let j=0; j < (arr.length - i -1); j++) {

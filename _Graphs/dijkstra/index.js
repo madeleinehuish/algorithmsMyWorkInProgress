@@ -13,7 +13,7 @@ const lowestCostNode = (costs, processed) => {
 };
 
 // function that returns the minimum cost and path to reach Finish
-const dijkstra = (graph) => {
+const dijkstra = graph => {
 
   // track lowest cost to reach each node
   const costs = Object.assign({finish: Infinity}, graph.start);

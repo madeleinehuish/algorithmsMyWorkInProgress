@@ -19,7 +19,7 @@
 // 	// }
 // })
 
-function isSubset(arr, sub) {
+function isSubset(arr, sub) { //maybe try this with a Map? or a Set?
 	let arrMap = {};
 	let subMap = {};
 

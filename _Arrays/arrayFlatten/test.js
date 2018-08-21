@@ -30,14 +30,17 @@ const testSolution4 = [1, 3, 2, 4, 6, 8, 7, 5, 9];
 
 test('flatten function successfully flattens an array with spread operator', () => {
   expect(flatten(testArr1)).toEqual(testSolution1);
+  // expect(flatten(testArr4)).toEqual(testSolution4); //doesn't work for 3 levels deep
 });
 
 test('flatten function successfully flattens an array with concat', () => {
   expect(flatten2(testArr2)).toEqual(testSolution2);
+  // expect(flatten2(testArr4)).toEqual(testSolution4); //doesn't work for 3 levels deep
 });
 
 test('flatten function successfully flattens an array with reduce', () => {
   expect(flatten3(testArr3)).toEqual(testSolution3);
+  // expect(flatten3(testArr4)).toEqual(testSolution4); //doesn't work for 3 levels deep
 });
 
 test('flatten3d function successfully flattens an array with 3 levels deep', () => {
