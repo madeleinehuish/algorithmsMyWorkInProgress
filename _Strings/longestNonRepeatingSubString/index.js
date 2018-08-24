@@ -15,12 +15,9 @@ function longestNonRepeatingSubString(str) {
       current++;
     }
   }
-  if(current > max) {
-    max = current;
-  }
+  if(current > max) max = current;
   return max;
 }
-
 
 
 // //this solution will return the actual string with max length

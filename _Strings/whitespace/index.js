@@ -1,6 +1,6 @@
 //create a function that gets rid off all extra whitespace more than one space
 
-//my solution (yes I came up with it)
+//my solution
 function whitespace1(str) {
 
 	return str.trim()

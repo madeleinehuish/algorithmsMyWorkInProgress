@@ -13,17 +13,20 @@ let testData1 = 'abcabcbb';
 let testData2 = 'bbbbb';
 let testData3 = 'pwwkew';
 let testData4 = 'abccdefgh';
+let testData5 = 'aabcd';
 
 let solution1 = 3;
 let solution2 = 1;
 let solution3 = 3;
 let solution4 = 6;
+let solution5 = 4;
 
 test('longestNonRepeatingSubString correctly identifies longest substring', () => {
   expect(longestNonRepeatingSubString(testData1)).toEqual(solution1);
   expect(longestNonRepeatingSubString(testData2)).toEqual(solution2);
   expect(longestNonRepeatingSubString(testData3)).toEqual(solution3);
   expect(longestNonRepeatingSubString(testData4)).toEqual(solution4);
+  expect(longestNonRepeatingSubString(testData5)).toEqual(solution5);
 });
 
 // test('longestNonRepeatingSubStringNonOptimal correctly identifies longest substring', () => {
