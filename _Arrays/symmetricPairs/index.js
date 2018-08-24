@@ -11,17 +11,17 @@ function symmetricPairs(arr) {
 		let second = arr[i][1];
 
 		if(pairMap[second] && pairMap[second] === first) {
-			console.log('second, first: ', second, first);
+			//console.log('second, first: ', second, first);
 			solution.push([second, first]);
 			// count++;
 		} else {
 			pairMap[first] = second;
-			console.log("pairMap[first] = second", first, second);
+			// console.log("pairMap[first] = second", first, second);
 		}
 	}
 
-	console.log('pairMap: ', pairMap);
-	console.log('solution: ', solution);
+	// console.log('pairMap: ', pairMap);
+	// console.log('solution: ', solution);
 	// return count;
 	return solution;
 }

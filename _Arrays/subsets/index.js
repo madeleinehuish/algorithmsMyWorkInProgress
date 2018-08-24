@@ -35,6 +35,19 @@ function isSubset(arr, sub) { //maybe try this with a Map? or a Set?
 
 }
 
+// //doesn't work
+// function isSubset(arr, sub) {
+// 	let arrSet = new Set(arr);
+// 	console.log('arr: ', arr, ', sub: ', sub);
+// 	sub.forEach(elem => {
+// 		if(!arrSet.has(elem)) {
+// 			console.log('elem: ')
+// 			return false;
+// 		}
+// 	})
+// 	return true;
+// }
+
 
 function isSubsetDupsPossible(arr, sub) {
 	let arrMap = {};

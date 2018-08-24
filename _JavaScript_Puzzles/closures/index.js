@@ -74,3 +74,31 @@ counter.value();
 counter.decrement();
 // console.log(counter.value()); // logs 1
 counter.value();
+
+
+//another implementation of basic counter (my own based on above)
+const counter =  ( () => {
+  let count = 0;
+  function increment () {
+    count++;
+  };
+  return {
+    add: function() {
+      increment();
+      console.log('current count now is : ', count);
+    },
+    value: function() {
+      return count;
+    }
+  }
+} )();
+
+counter.add();
+counter.add();
+counter.add();
+counter.add();
+counter.add();
+counter.add();
+counter.add();
+counter.add();
+counter.value();

@@ -1,3 +1,5 @@
+//to work on: find dupes in string
+
 
 // //this one finds amount of all duplicates in a given array (from stack overflow)
 let duparr = [1, 3, 3, 4, 200, 4, 25, 78, 3, 100, 2];
@@ -65,10 +67,8 @@ function areThereAnyDupes(arr) {
   let counts = {};
   arr.forEach(elem => {
     counts[elem] = (counts[elem] ||0) + 1;
-  });
-  for(let elem in counts) {
     if (counts[elem] > 1) return true;
-  }
+  });
   return false;
 }
 
@@ -85,14 +85,17 @@ function areThereAnyDupes(arr) {
 //find last repeating character in string (this should be a string converted to array due to reverse method in function)
 function findLastRepeatingCharacter(arr) {
   let counts = {};
-  for(let char of arr) {
-    counts[char] = (counts[char] || 0) + 1;
-  }
   for(let char of arr.reverse()) {
+    counts[char] = (counts[char] || 0) + 1;
     if (counts[char] > 1) {
       return char;
     }
   }
+  // for(let char of arr.reverse()) {
+  // if (counts[char] > 1) {
+    // return char;
+  // }
+  // }
   return null;
 }
 
@@ -105,6 +108,7 @@ function findFirstRepeatingCharacter(str) {
   return null;
 }
 
+//is there a way to make this faster?
 function findFirstNonRepeatingCharacter(str) {
   let counts = {};
   for(let char of str) {
@@ -116,6 +120,7 @@ function findFirstNonRepeatingCharacter(str) {
   return null;
 }
 
+//can we make this faster?
 function findLastNonRepeatingCharacter(str) { //this one actually takes an array. strings don't have a reverse method
   let counts = {};
   for(let char of str) {
@@ -127,8 +132,15 @@ function findLastNonRepeatingCharacter(str) { //this one actually takes an array
   return null;
 }
 
+//this removes all duplicates
+function stripDuplicatesFromArray(arr) {
+  return [...new Set(arr)];
+}
+
 module.exports = { areThereAnyDupes,
                    findFirstRepeatingCharacter,
                    findLastRepeatingCharacter,
                    findFirstNonRepeatingCharacter,
-                   findLastNonRepeatingCharacter };
+                   findLastNonRepeatingCharacter,
+                   findTotalNumberOfDupes
+                 };

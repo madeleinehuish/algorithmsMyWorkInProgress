@@ -27,7 +27,8 @@ function anagrams(stringA, stringB) {
 	  }
 
 	for (let char in charMapA) {
-		if (charMapA[char] !== charMapB[char]) {
+		// if (charMapA[char] !== charMapB[char]) {
+		if(!charMapB[char]) {
 			return false;
 		}
 	}
@@ -65,6 +66,6 @@ function anagrams(stringA, stringB) {
 // 	let check2 = stringB.split('').sort().join('');
 //
 // 	return check1 === check2;
-// }
+}
 
 module.exports = anagrams;

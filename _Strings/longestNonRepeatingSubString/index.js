@@ -1,27 +1,30 @@
-//this is my solution which I came up with on my own
+// //this is my solution which I came up with on my own using Set()
+
 function longestNonRepeatingSubString(str) {
-  let max = currentSubStrLength = 0;
-  let charMap = new Map();
+  let max = current = 0;
+  let charSet = new Set();
 
   for(let char of str) {
-
-    if(charMap.has(char)) {
-      if(currentSubStrLength > max) {
-        max = currentSubStrLength;
-
+    if(charSet.has(char)) {
+      if(current > max) {
+        max = current;
+        current = 1;
       }
-      currentSubStrLength = 0;
+    } else {
+      charSet.add(char);
+      current++;
     }
-    currentSubStrLength++;
-    charMap.set(char, charMap.get(char)+1 || 0)
   }
-
+  if(current > max) {
+    max = current;
+  }
   return max;
 }
 
-const API_KEY = 'AIzaSyACaJJh05-lMN9DbO0cvnorV5sKFyO91TM';
-const ROOT_URL = 'https://www.googleapis.com/youtube/v3/search';
+
+
 // //this solution will return the actual string with max length
+// im not sure if it works. i've since added tests which forced me to rewrite the code above so this might no longer be valid
 // function longestNonRepeatingSubString(str) {
 //   let max = currentSubStrLength = 0;
 //   let charMap = new Map();

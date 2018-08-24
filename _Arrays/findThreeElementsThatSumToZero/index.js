@@ -41,13 +41,19 @@ function getPairsCount(arr, sum) {
 	//start get pairs count functionality
 	let hashMap = {};
 	let count = 0;
-	for(let i=0; i < newArr.length; i++) {
-		hashMap[newArr[i]] = (hashMap[newArr[i]] || 0) + 1;
+
+	for(let elem of newArr) {
+		hashMap[elem] = (hashMap[elem] || 0) + 1;
 	}
-	for(let i=0; i < newArr.length; i++) {
-		if(hashMap[sum - newArr[i]]) count++;
+	// for(let i=0; i < newArr.length; i++) {
+	// 	if(hashMap[sum - newArr[i]]) count++;
+	// 	//for duplicate values
+	// 	// if(sum - arr[i] === arr[i]) count--;
+	// }
+	for(let elem of newArr) {
+		if(hashMap[sum - elem]) count++;
 		//for duplicate values
-		// if(sum - arr[i] === arr[i]) count--;
+		// if(sum - elem === elem) count--;
 	}
 	return count/2;
 }

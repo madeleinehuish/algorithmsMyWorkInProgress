@@ -18,25 +18,24 @@ function maxSum(arr) {
 
 //find continuous sub array which adds to given sum
 function subArrWithGivenSum(arr, n){
-	var obj = {};
-	var currentSum = 0;
+	let obj = {};
+	let currentSum = 0;
 
-	for(var i = 0; i < arr.length; i++){
+	for(let i = 0; i < arr.length; i++){
 		currentSum += arr[i];
-		console.log("currentSum ", currentSum);
-		if(currentSum == n){
+
+		if(currentSum === n){
 			return [0, i];
 		}
 		obj[currentSum] = i;
-		console.log("currentSum - n: ", (currentSum - n));
+
 		if(obj.hasOwnProperty(currentSum - n)){
 			return [obj[currentSum - n] + 1, i];
 		}
-
-		console.log(obj);
 	}
 	return -1;
 }
+
 
 
 
