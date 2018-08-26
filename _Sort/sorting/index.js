@@ -1,41 +1,75 @@
-// --- Directions
-// Implement bubbleSort, selectionSort, and mergeSort
 
-//Look under Divide and Conquer for Quicksort!!!!
+// bubbleSort, selectionSort, and mergeSort. Also includes quickSort.
 
-//look up insertion sort, radix sort, heap sort
+//Look also under Divide and Conquer for Quicksort!!!!
 
+//need to still implement insertion sort, radix sort, heap sort and others
+
+
+// //bubble sort (I modified Steven Grider's method to use es6 swapping)
 function bubbleSort(arr) {
 	for(let i=0; i < arr.length; i++) {
-		for(let j=0; j < (arr.length - i -1); j++) {
+		// if (i===arr.length-1) console.log('i: ', i); //this line is only for seeing the full loop in addition to bottom console.log
+		for(let j=0; j < (arr.length - i - 1); j++) {
 			if(arr[j] > arr[j+1]) {
-				const lesser = arr[j+1];
-				arr[j+1] = arr[j];
-				arr[j] = lesser;
+				[arr[j], arr[j+1]] = [arr[j+1], arr[j]];
 			}
+			// console.log('i: ', i, 'j: ', j, ' arr: ', arr);
 		}
 	}
 	return arr;
+}
+
+//  // //selection sort, Steven Grider's method
+// function selectionSort(arr) {
+// 	// console.log('starting arr: ', arr);
+// 	for(let i=0; i < arr.length; i++) {
+// 		let indexOfMin = i;
+// 		for(let j = i+1; j < arr.length; j++) {
+// 			if(arr[j] < arr[indexOfMin]) {
+// 				indexOfMin = j;
+// 			}
+// 		}
+// 		if(indexOfMin !== i) {
+// 			[arr[i], arr[indexOfMin]] = [arr[indexOfMin], arr[i]];
+// 		}
+// 		// console.log('round: ', i, ' arr=', arr);
+// 	}
+// 	return arr;
+// }
+
+//selection sort as derived by myself from the python in Grokking Algorithms (a few changes required for the JS)
+//this version goes through array arr.length-1 times, searching for smallest each time, taking it out and putting into new array
+//the original array changes so each successive loop smaller
+function findSmallestIndex(arr) {
+	let smallest = arr[0];
+	let smallestIndex = 0;
+
+	for(let i=0; i < arr.length; i++) {
+		if(arr[i] < smallest) {
+			smallest = arr[i];
+			smallestIndex = i;
+		}
+	}
+	return smallestIndex;
 }
 
 function selectionSort(arr) {
+	let newArr = [];
+	let len = arr.length; //this is necessary as arr.length will change with splice below so can't be used for the loop
 
-	for(let i=0; i < arr.length; i++) {
-		let indexOfMin = i;
-		for(let j = i+1; j < arr.length; j++) {
-			if(arr[j] < arr[indexOfMin]) {
-				indexOfMin = j;
-			}
-		}
-		if(indexOfMin !== i) {
-			let lesser = arr[indexOfMin];
-			arr[indexOfMin] = arr[i];
-			arr[i] = lesser;
-		}
+	for(let i=0; i < len; i++) {
+		let smallestIndex = findSmallestIndex(arr);
+		newArr.push(...arr.splice(smallestIndex, 1));
+		// console.log('round ', i, ' arr: ', arr, ' newArr: ', newArr)
 	}
-	return arr;
+
+	return newArr;
 }
 
+
+
+// merge sort
 function mergeSort(arr) {
 	if(arr.length === 1) {
 		return arr;
@@ -43,7 +77,7 @@ function mergeSort(arr) {
 	const center = Math.floor(arr.length/2);
 	const left = arr.slice(0, center);
 	const right = arr.slice(center);
-
+	// console.log('in mergeSort, calling merge(mergeSort(left), mergeSort(right)); mergeSort(left) ',mergeSort(left), ' mergeSort(right) ', mergeSort(right))
 	return merge(mergeSort(left), mergeSort(right));
 }
 
@@ -56,18 +90,45 @@ function merge(left, right) {
 			results.push(right.shift());
 		}
 	}
+	// console.log('merge: [...results, ...left, ...right] ', [...results, ...left, ...right])
 	return [...results, ...left, ...right];
 }
 
-//this is also filed under divide and conquer
+// //quick sort
+// //this is also filed under divide and conquer
+// //this version uses pivot at arr[0]
+// function quickSort(arr) {
+// 	if(arr.length < 2) return arr;
+//
+// 	let pivot = arr[0]; //this is not as optimal as the random pivot below, which has been determined to be much faster
+//
+//   let lesser = [];
+//   let greater = [];
+//
+//   for(let i = 1; i < arr.length; i++) { //note loop starts at 1 as pivot is at arr[0]
+//     if(arr[i] < pivot) {
+//       lesser.push(arr[i]);
+//     } else {
+//       greater.push(arr[i]);
+//     }
+//   }
+//
+//   return quickSort(lesser).concat(pivot, quickSort(greater));
+// }
+
+// //this version of quickSort uses a random pivot
+// //also see https://stackoverflow.com/questions/31332438/implementing-quicksort-in-javascript-with-a-random-pivot
 function quickSort(arr) {
 	if(arr.length < 2) return arr;
 
-	let pivot = arr[0];
+	let pivotIndex = Math.floor(Math.random()*(arr.length-1));
+	let pivot = arr[pivotIndex];
+
   let lesser = [];
   let greater = [];
 
-  for(let i = 1; i < arr.length; i++) {
+  for(let i = 0; i < arr.length; i++) { //start index at 0 using random pivot but remember the continue statement below
+		if(i===pivotIndex) continue;
     if(arr[i] < pivot) {
       lesser.push(arr[i]);
     } else {
@@ -78,7 +139,41 @@ function quickSort(arr) {
   return quickSort(lesser).concat(pivot, quickSort(greater));
 }
 
-module.exports = { bubbleSort, selectionSort, mergeSort, merge, quickSort };
+module.exports = { bubbleSort, selectionSort, findSmallestIndex, mergeSort, merge, quickSort };
+
+// //old way of doing before es6 with temp variable
+// function bubbleSort(arr) {
+// 	for(let i=0; i < arr.length; i++) {
+// 		for(let j=0; j < (arr.length - i -1); j++) {
+// 			if(arr[j] > arr[j+1]) {
+// 				const lesser = arr[j+1];
+// 				arr[j+1] = arr[j];
+// 				arr[j] = lesser;
+// 			}
+// 		}
+// 	}
+// 	return arr;
+// }
+
+// // old way before es6
+// function selectionSort(arr) {
+//
+// 	for(let i=0; i < arr.length; i++) {
+// 		let indexOfMin = i;
+// 		for(let j = i+1; j < arr.length; j++) {
+// 			if(arr[j] < arr[indexOfMin]) {
+// 				indexOfMin = j;
+// 			}
+// 		}
+// 		if(indexOfMin !== i) {
+// 			let lesser = arr[indexOfMin];
+// 			arr[indexOfMin] = arr[i];
+// 			arr[i] = lesser;
+// 		}
+// 	}
+// 	return arr;
+// }
+
 
 //for more on quick sort see also the following site:
 //http://blog.benoitvallon.com/sorting-algorithms-in-javascript/the-quicksort-algorithm/
