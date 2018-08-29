@@ -11,10 +11,26 @@ function whitespace1(str) {
 
 //regex solution
 function whitespace2(str) {
+//	\s matches all whitespace characters, and + for match one or more
 	return str.replace(/\s+/g, " ").trim();
 }
 
-module.exports = { whitespace1, whitespace2 }
+//replaces whitespace with %20 (non-regex solution)
+function replaceWhitespace(str) {
+	return str.split('')
+	          .map(elem => {
+              if(elem===' ') return '%20';
+              else return elem;
+              })
+            .join('')
+}
+
+//regex solution replacing whitespace with %20
+function replaceWhitespaceRegex(str) {
+  return str.replace(/\s/g, "%20");
+}
+
+module.exports = { whitespace1, whitespace2, replaceWhitespace, replaceWhitespaceRegex }
 
 //explanation of 1 above, using example :  " Hey    how are   you  doing   today?"
 //the trim will get rid of front and back whitespace

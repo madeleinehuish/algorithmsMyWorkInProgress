@@ -1,5 +1,5 @@
 //maybe also write a function checking for substrings
-
+//this actually might be just checking for substring not permutation
 function isPermutation(str, sub) { //this is similar to isSubset in array methods
 
 	let arrMap = {};
@@ -17,6 +17,16 @@ function isPermutation(str, sub) { //this is similar to isSubset in array method
 	return true;
 
 }
+
+// //from cracking the coding interview...
+// function isPermutation(stringOne, stringTwo) {
+//   if (stringOne.length !== stringTwo.length) {
+//     return false;
+//   } else {
+//     return stringOne.split('').sort().join('') === stringTwo.split('').sort().join('');
+//   }
+// };
+
 //trying to get this working with a Map()
 // function isPermutation(str1, str2) {
 //
