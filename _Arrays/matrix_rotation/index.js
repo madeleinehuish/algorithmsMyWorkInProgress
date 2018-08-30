@@ -7,17 +7,17 @@ function matrixRotate(grid) {
 
 	for (let i = 0; i < grid.length; i++) {
 
-			//convert to col/row
-      let row = Math.floor(i / rowLength);
-	    let col = i % rowLength;
+		//convert to col/row
+    let row = Math.floor(i / rowLength);
+    let col = i % rowLength;
 
-			//find new col/row
-      let newrow = col;
-      let newcol = rowLength - row - 1;
+		//find new col/row
+    let newrow = col;
+    let newcol = rowLength - row - 1;
 
-	    //convert back to index
-	    let newPosition = newrow * rowLength + newcol;
-	    newGrid[newPosition] = grid[i];
+    //convert back to index
+    let newPosition = newrow * rowLength + newcol;
+    newGrid[newPosition] = grid[i];
 
 	}
 
@@ -32,17 +32,17 @@ function matrixRotateCounterClock(grid) {
 
 	for (let i = 0; i < grid.length; i++) {
 
-			//convert to col/row
-			let row = Math.floor(i / rowLength);
-	    let col = i % rowLength;
+		//convert to col/row
+		let row = Math.floor(i / rowLength);
+		let col = i % rowLength;
 
-			//find new col/row (these lines are the only ones reversed from previous function)
-      let newrow = rowLength - col - 1;
-      let newcol = row;
+		//find new col/row (these lines are the only ones reversed from previous function)
+		let newrow = rowLength - col - 1;
+		let newcol = row;
 
-	    //convert back to index
-	    let newPosition = newrow * rowLength + newcol;
-	    newGrid[newPosition] = grid[i];
+		//convert back to index
+		let newPosition = newrow * rowLength + newcol;
+		newGrid[newPosition] = grid[i];
 
 	}
 
