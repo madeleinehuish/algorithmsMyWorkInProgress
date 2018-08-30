@@ -38,13 +38,10 @@ class LinkedList {
 	getLast() {
 		let node = this.head;
 
-		if(!node) {
-			return null
-		}
+		if(!node) return null;
+
 		while(node) {
-			if(!node.next) {
-				return node
-			}
+			if(!node.next) return node
 			node = node.next;
 		}
 		// return this.getAt(this.size() - 1);
@@ -58,25 +55,44 @@ class LinkedList {
 		this.head = this.head.next;
 	}
 
+	//stephen grider's implementation
+	// removeLast() {
+	// 	//size === 0
+	// 	if(!this.head) {
+	// 		return;
+	// 	}
+	// 	//size === 1
+	// 	if(!this.head.next) {
+	// 		this.head = null;
+	// 		return;
+	// 	}
+	//
+	// 	let previous = this.head;
+	// 	let node = this.head.next;
+	// 	//size > 1
+	// 	while(node.next) {
+	// 		previous = node;
+	// 		node = node.next;
+	// 	}
+	// 	previous.next = null;
+	// }
+
+	//my implementation
 	removeLast() {
-		//size === 0
-		if(!this.head) {
-			return;
-		}
-		//size === 1
-		if(!this.head.next) {
-			this.head = null;
+		if(!this.head) return;
+		let node = this.head;
+		if(!node.next) {
+			this.head=null;
 			return;
 		}
 
-		let previous = this.head;
-		let node = this.head.next;
-		//size > 1
-		while(node.next) {
-			previous = node;
-			node = node.next;
+		while(node) {
+			if(!node.next.next) {
+				node.next=null;
+				return;
+			}
+			node=node.next;
 		}
-		previous.next = null;
 	}
 
 	insertLast(data) {

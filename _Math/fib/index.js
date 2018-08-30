@@ -8,6 +8,8 @@
 // Example:
 //   fib(4) === 3
 
+
+// //this is stephen grider's memoize function which works great as a separate function. i prefer the more concise solution below
 // function memoize(fn){
 // 	const cache = {};
 //
@@ -39,7 +41,7 @@
 
 // //recursive solution is O(2^n), exponential, much less efficient than the iterative solution below
 function slowfib(n) {
-	if (n < 2) {
+	if (n <= 1) {
 		return n;
 	}
 
@@ -51,10 +53,7 @@ function fib(n) {
 	const result = [0,1];
 
 	for(let i=2; i<=n; i++){
-		// const a = result[i - 1];
-		// const b = result[i - 2];
-		//
-		// result.push(a+b);
+
 		result[i] = result[i-1] + result[i-2];
 	}
 
@@ -62,4 +61,13 @@ function fib(n) {
 	// return result; //returns whole array
 }
 
-module.exports = fib;
+function memoizedFib(n, memo={}) {
+
+  if (memo[n]) return memo[n];
+  if (n <= 1) return n;
+
+  return memo[n] = memoizedFib(n - 1, memo) + memoizedFib(n - 2, memo);
+}
+
+
+module.exports = { fib, memoizedFib };
