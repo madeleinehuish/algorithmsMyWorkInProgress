@@ -2,16 +2,16 @@
 
 //clockwise rotation
 function matrixRotate(grid) {
-	let newGrid = [];
-	let rowLength = Math.sqrt(grid.length);
+  let newGrid = [];
+  let rowLength = Math.sqrt(grid.length);
 
-	for (let i = 0; i < grid.length; i++) {
+  for (let i = 0; i < grid.length; i++) {
 
-		//convert to col/row
+    //convert to col/row
     let row = Math.floor(i / rowLength);
     let col = i % rowLength;
 
-		//find new col/row
+    //find new col/row
     let newrow = col;
     let newcol = rowLength - row - 1;
 
@@ -19,34 +19,34 @@ function matrixRotate(grid) {
     let newPosition = newrow * rowLength + newcol;
     newGrid[newPosition] = grid[i];
 
-	}
+  }
 
-	return newGrid;
+  return newGrid;
 
 }
 
 //counterclockwiseRotation
 function matrixRotateCounterClock(grid) {
-	let newGrid = [];
-	let rowLength = Math.sqrt(grid.length);
+  let newGrid = [];
+  let rowLength = Math.sqrt(grid.length);
 
-	for (let i = 0; i < grid.length; i++) {
+  for (let i = 0; i < grid.length; i++) {
 
-		//convert to col/row
-		let row = Math.floor(i / rowLength);
-		let col = i % rowLength;
+    //convert to col/row
+    let row = Math.floor(i / rowLength);
+    let col = i % rowLength;
 
-		//find new col/row (these lines are the only ones reversed from previous function)
-		let newrow = rowLength - col - 1;
-		let newcol = row;
+    //find new col/row (these lines are the only ones reversed from previous function)
+    let newrow = rowLength - col - 1;
+    let newcol = row;
 
-		//convert back to index
-		let newPosition = newrow * rowLength + newcol;
-		newGrid[newPosition] = grid[i];
+    //convert back to index
+    let newPosition = newrow * rowLength + newcol;
+    newGrid[newPosition] = grid[i];
 
-	}
+  }
 
-	return newGrid;
+  return newGrid;
 
 }
 
