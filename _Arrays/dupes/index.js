@@ -63,14 +63,14 @@ function returnArrOfAllDuplicates(arr) {
   return arrOfDupes;
 }
 
-function areThereAnyDupes(arr) {
-  let counts = {};
-  arr.forEach(elem => {
-    counts[elem] = (counts[elem] ||0) + 1;
-    if (counts[elem] > 1) return true;
-  });
-  return false;
-}
+// function areThereAnyDupes(arr) {
+//   let counts = {};
+//   arr.forEach(elem => {
+//     counts[elem] = (counts[elem] ||0) + 1;
+//     if (counts[elem] > 1) return true;
+//   });
+//   return false;
+// }
 
 //are there any duplicates in this array?
 function areThereAnyDupes(arr) {

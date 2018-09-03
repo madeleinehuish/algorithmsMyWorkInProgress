@@ -1,4 +1,4 @@
-const { findThreeNumbers, getPairsCount } = require('./index');
+const { findThreeNumbers, getPairsCount, getPairsCountStripDupes } = require('./index');
 
 beforeEach(() => {
   jest.spyOn(console, 'log');
@@ -33,5 +33,17 @@ test('findThreeNumbers correctly sees when array does not have 3 values that sum
 });
 
 test('getPairsCount correctly returns proper value', () => {
-  expect(getPairsCount([1, 5, 6, 0, 12, -6, -6], 6)).toEqual(3);
+  expect(getPairsCount([1, 5, 6, 0, 12, -6, -6], 6)).toEqual(4);
+});
+
+test('getPairsCount correctly returns proper value', () => {
+  expect(getPairsCount([5, 5, 5, 3, 7, 7, 3], 10)).toEqual(7);
+});
+
+test('getPairsCountStripDupes correctly returns proper value', () => {
+  expect(getPairsCountStripDupes([1, 5, 6, 0, 12, -6, -6], 6)).toEqual(3);
+});
+
+test('getPairsCountStripDupes correctly returns proper value', () => {
+  expect(getPairsCountStripDupes([5, 5, 5, 3, 7, 7, 3], 10)).toEqual(1);
 });

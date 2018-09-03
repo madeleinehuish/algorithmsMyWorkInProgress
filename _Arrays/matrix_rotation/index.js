@@ -1,5 +1,7 @@
 //rotate a 2d matrix 90 degrees to right as per cracking the coding interview 1.7
 
+//these are O(n) solutions
+
 //clockwise rotation
 function matrixRotate(grid) {
   let newGrid = [];
@@ -16,7 +18,7 @@ function matrixRotate(grid) {
     let newcol = rowLength - row - 1;
 
     //convert back to index
-    let newPosition = newrow * rowLength + newcol;
+    let newPosition = (rowLength * newrow) + newcol;
     newGrid[newPosition] = grid[i];
 
   }
@@ -41,7 +43,7 @@ function matrixRotateCounterClock(grid) {
     let newcol = row;
 
     //convert back to index
-    let newPosition = newrow * rowLength + newcol;
+    let newPosition = (rowLength * newrow) + newcol;
     newGrid[newPosition] = grid[i];
 
   }
@@ -88,6 +90,8 @@ module.exports =  { matrixRotate, matrixRotateCounterClock };
 
 
 // //my solution was based on this one... from stack overflow: https://stackoverflow.com/questions/15170942/how-to-rotate-a-matrix-in-an-array-in-javascript
+//y is row and x is col
+
 // function matrixRotate(grid) {
 // 	let newGrid = [];
 // 	let rowLength = Math.sqrt(grid.length);

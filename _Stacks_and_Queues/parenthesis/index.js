@@ -5,7 +5,9 @@ const parenthesisBalanced = str => {
   let closed = { '}': true, ']': true, ')': true };
 
   for (let char of str) {
-    // console.log('open[char]: ', open[char]);
+    console.log('char: ', char);
+    console.log('open[char]: ', open[char]);
+    console.log('closed[char]: ', closed[char]);
     if (open[char]) {
       stack.push(char);
     } else if (closed[char]) {
@@ -17,7 +19,7 @@ const parenthesisBalanced = str => {
 };
 
 
-//this still isn't working
+//this still isn't working :(
 const makeBalanced = str => {
   let stack = [];
   let result = str;

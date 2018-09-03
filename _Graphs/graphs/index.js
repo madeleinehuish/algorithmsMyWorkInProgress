@@ -7,7 +7,9 @@ const adjacencyMatrix = [
 ]
 
 // breadth first search (finds distance away of all nodes, inputing a graph and starting node)
-// based on following tutorial : https://www.youtube.com/watch?v=wu0ckYkltus
+// based on following tutorials
+//  https://www.youtube.com/watch?v=DBRW8nwZV-g&t=9s
+//  https://www.youtube.com/watch?v=wu0ckYkltus
 function bfs(graph, root) {
   let nodesLen = {};
 
@@ -24,8 +26,10 @@ function bfs(graph, root) {
     current = queue.shift();
 
     let curConnected = graph[current]; //gets current node
+		console.log('curConnected: ', curConnected);
     let neighborIdx = [];              //array set up to hold all neighbors of that node
     let idx = curConnected.indexOf(1); //looking for 1, which means node is connected to that node
+    console.log('idx: ', idx);
     while(idx !== -1) {                //keep cycling through and adding nodes that are connected
       neighborIdx.push(idx);
       idx = curConnected.indexOf(1, idx + 1);
