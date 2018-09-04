@@ -29,6 +29,7 @@
 // }
 
 function levelWidth(root) {
+	//counters array is the width at each level
 	const counters = [0];
 	const arr = [root, 's'];
 
@@ -36,10 +37,12 @@ function levelWidth(root) {
 		const node = arr.shift();
 		if(node === 's') {
 			counters.push(0);
+			console.log('counters: ', counters);
 			arr.push('s');
 		} else {
 			arr.push(...node.children);
 			counters[counters.length-1] ++;
+			console.log('counters: ', counters);
 		}
 	}
 	return counters;
