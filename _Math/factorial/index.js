@@ -11,11 +11,16 @@
 // 	}
 // }
 
-function factorialRecursive (num) {
-	if(num<0) return -1; //not necessary but a safety factor
-	if(num===0) return 1;
-	return num * factorialRecursive(num-1);
-}
+// function factorialRecursive (num) {
+// 	if(num<0) return -1; //not necessary but a safety factor
+// 	if(num===0) return 1;
+// 	return num * factorialRecursive(num-1);
+// }
+
+//one line factorial recursive
+const factorialRecursive = number => {
+  return number < 2 ? 1 : number * factorialRecursive(number - 1);
+};
 
 //while loop iterative solution
 function factorialWhile(num) {

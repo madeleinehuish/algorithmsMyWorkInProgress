@@ -61,11 +61,13 @@ function anagrams(stringA, stringB) {
 // 	return true;
 // }
 
+
+// // easiest but has linearithmic O vs the map above which has linear
 // function anagrams(stringA, stringB) {
 // 	let check1 = stringA.split('').sort().join('');
 // 	let check2 = stringB.split('').sort().join('');
 //
 // 	return check1 === check2;
-}
+// }
 
 module.exports = anagrams;

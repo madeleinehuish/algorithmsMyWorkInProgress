@@ -1,5 +1,7 @@
 // //prime number is greater than one and only divisible by itself and 1
 
+//solution #1
+//this solution is not as efficient when combined with sieveOfEratosthenes
 function isPrime(num) {
   if(num < 2) return false;
   for(let i=2; i < num; i++){
@@ -7,6 +9,35 @@ function isPrime(num) {
   }
   return true;
 }
+
+//return all prime numbers from 0 to that number
+function sieveOfEratosthenes(n) {
+  let primes = [];
+
+  for(let i=0; i <= n; i++) {
+    if(isPrime(i)) primes.push(i);
+  }
+  return primes;
+}
+
+//solution #2
+//more efficient: I got this from https://medium.com/siliconwat/algorithms-in-javascript-b0bed68f4038
+const primesOptimal = number => {
+    const numbers = new Array(number + 1);
+    numbers.fill(true);
+    numbers[0] = numbers[1] = false;
+
+    for (let i = 2; i <= Math.sqrt(number); i++) {
+        for (let j = 2; i * j <= number; j++) numbers[i * j] = false;
+    }
+
+    return numbers.reduce(
+        (primes, isPrime, prime) => (isPrime ? primes.concat(prime) : primes),
+        []
+    );
+};
+
+module.exports = { isPrime, sieveOfEratosthenes, primesOptimal };
 
 
 //You are given two positive integers a and b (a < b <= 20000). Complete the function which returns a list of all those
