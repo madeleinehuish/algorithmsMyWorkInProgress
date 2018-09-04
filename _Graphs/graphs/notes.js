@@ -1,5 +1,7 @@
 //these are some notes on graph studies I've been doing....
 
+//also see https://medium.com/basecs/a-gentle-introduction-to-graph-theory-77969829ead8
+
 //ways to represent graphs
 //notes based on the following video : https://www.youtube.com/watch?v=DBRW8nwZV-g
 //1. adjacency list

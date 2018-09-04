@@ -30,12 +30,3 @@ function reverseInt(n) {
 
 
 module.exports = reverseInt;
-
-function fizzbuzz(n) {
-	for(let i=0; i <= n; i++) {
-		if(i%5 && i%3) console.log('fizzbuzz');
-		else if(i%3) console.log('fizz');
-		else if(i%5) console.log('buzz');
-		else console.log(n);
-	}
-}

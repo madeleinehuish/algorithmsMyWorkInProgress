@@ -1,4 +1,3 @@
-//find value using classical binary search
 
 function linearSearch(array, value) {
   for (let i = 0; i < array.length; i++) {
@@ -22,17 +21,17 @@ algorithm for binary search
 5. lastly return -1 (for the case in which value not found)
 
 */
-function binarySearch(arr, val) {
+function binarySearch(arr, value) {
   let low = 0;
   let high = arr.length - 1;
 
   while (low <= high) {
     let mid = Math.floor(low + (high - low) / 2);
-    if (arr[mid] === val) {
+    if (arr[mid] === value) {
       return mid
-    } else if (arr[mid] < val) {
+    } else if (arr[mid] < value) {
       low = mid + 1;
-    } else {
+    } else { //arr[mid] > value
       high = mid - 1;
     }
   }
