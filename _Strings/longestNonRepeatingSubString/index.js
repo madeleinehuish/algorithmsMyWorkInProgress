@@ -2,20 +2,33 @@
 
 function longestNonRepeatingSubString(str) {
   let max = current = 0;
+  let currArr = [];
+  let maxArr = [];
   let charSet = new Set();
 
   for(let char of str) {
     if(charSet.has(char)) {
       if(current > max) {
         max = current;
+        maxArr = currArr;
+        maxArr.push(char);
         current = 1;
+        currArr = [];
       }
     } else {
       charSet.add(char);
       current++;
+      console.log('char: ', char);
+      currArr.push(char)
     }
   }
-  if(current > max) max = current;
+  if(current > max) {
+    max = current;
+    maxArr = currArr;
+
+  }
+  let maxStr = maxArr.join('');
+  console.log('maxStr: ', maxStr);
   return max;
 }
 
