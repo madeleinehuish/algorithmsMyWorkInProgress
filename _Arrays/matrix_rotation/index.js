@@ -2,7 +2,8 @@
 
 //these are O(n) solutions
 
-//clockwise rotation
+//clockwise rotation with 1d array input
+//this only works for square matrices
 function matrixRotate(grid) {
   let newGrid = [];
   let rowLength = Math.sqrt(grid.length);
@@ -27,7 +28,29 @@ function matrixRotate(grid) {
 
 }
 
-//counterclockwiseRotation
+//clockwise rotation given an array of arrays (2D) as matrix
+//this works nicely for rectangular matrices
+function matrixRotateWith2DMatrix(arr) {
+  let newArr = [];
+  let rowLength = arr[0].length;
+
+  for(let col=0; col < rowLength; col++) {
+    for(let row=arr.length-1; row >= 0; row--) {
+      newArr.push(arr[row][col]);
+    }
+  }
+
+  //push values into original format (convert 1d to 2d)
+  let chunked = [];
+
+  for(let i=0; i < rowLength; i++) {
+    chunked[i] = newArr.splice(0, arr.length)
+  }
+
+  return chunked;
+}
+
+//counterclockwiseRotation (1d square solution)
 function matrixRotateCounterClock(grid) {
   let newGrid = [];
   let rowLength = Math.sqrt(grid.length);
@@ -52,7 +75,7 @@ function matrixRotateCounterClock(grid) {
 
 }
 
-module.exports =  { matrixRotate, matrixRotateCounterClock };
+module.exports =  { matrixRotate, matrixRotateCounterClock, matrixRotateWith2DMatrix };
 
 // // //console version (useful to see what's going on)
 // function matrixRotate(grid) {

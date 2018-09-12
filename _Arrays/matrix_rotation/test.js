@@ -1,4 +1,4 @@
-const { matrixRotate, matrixRotateCounterClock } = require('./index');
+const { matrixRotate, matrixRotateCounterClock, matrixRotateWith2DMatrix } = require('./index');
 
 test('matrixRotate is a function', () => {
 	expect(typeof matrixRotate).toEqual('function');
@@ -6,6 +6,10 @@ test('matrixRotate is a function', () => {
 
 test('matrixRotate is a function', () => {
 	expect(typeof matrixRotateCounterClock).toEqual('function');
+})
+
+test('matrixRotateWith2DMatrix is a function', () => {
+	expect(typeof matrixRotateWith2DMatrix).toEqual('function');
 })
 
 const testGrid = [
@@ -20,7 +24,24 @@ const testGrid2 = [
   [5], [6], [7], [8],
   [9], [0], [1], [2],
   [3], [4], [5], [6]
+];
+
+const testGrid3 = [
+	[1, 2, 3, 4],
+	[5, 6, 7, 8],
+	[9, 10, 11, 12],
+	[13, 14, 15, 16]
 ]
+
+const testGrid4 = [
+	[1, 2],
+	[3, 4],
+	[5, 6],
+	[7, 8],
+	[9, 10]
+]
+
+
 
 const clockwiseSolution = [
   [3,0], [2,0], [1,0], [0,0],
@@ -50,6 +71,18 @@ const counterClockSolution2 = [
   [1], [5], [9], [3]
 ]
 
+const testGridSolution3 = [
+	[13, 9, 5, 1],
+	[14, 10, 6, 2],
+	[15, 11, 7, 3],
+	[16, 12, 8, 4]
+]
+
+const testGridSolution4 = [
+	[9, 7, 5, 3, 1],
+  [10, 8, 6, 4, 2]
+]
+
 
 test('matrixRotate successfully returns a matrix copy that is rotated 90 degrees to right', () => {
 	expect(matrixRotate(testGrid)).toEqual(clockwiseSolution);
@@ -59,4 +92,9 @@ test('matrixRotate successfully returns a matrix copy that is rotated 90 degrees
 test('matrixRotateCounterClock successfully returns a matrix copy that is rotated 90 degrees to left', () => {
 	expect(matrixRotateCounterClock(testGrid)).toEqual(counterClockSolution);
   expect(matrixRotateCounterClock(testGrid2)).toEqual(counterClockSolution2);
+})
+
+test('matrixRotateWith2DMatrix successfully returns a matrix copy that is rotated 90 degrees to left', () => {
+	expect(matrixRotateWith2DMatrix(testGrid3)).toEqual(testGridSolution3);
+	expect(matrixRotateWith2DMatrix(testGrid4)).toEqual(testGridSolution4);
 })

@@ -11,7 +11,7 @@ function symmetricPairs(arr) {
 		let second = arr[i][1];
 
 		if(pairMap[second] && pairMap[second] === first) {
-			//console.log('second, first: ', second, first);
+			// console.log('second, first: ', second, first);
 			solution.push([second, first]);
 			// count++;
 		} else {
@@ -20,7 +20,7 @@ function symmetricPairs(arr) {
 		}
 	}
 
-	// console.log('pairMap: ', pairMap);
+	console.log('pairMap: ', pairMap);
 	// console.log('solution: ', solution);
 	// return count;
 	return solution;

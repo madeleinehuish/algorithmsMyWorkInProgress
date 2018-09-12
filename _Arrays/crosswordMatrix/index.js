@@ -37,7 +37,7 @@ function crosswordMatrix(arr, word, rowLength, colLength) {
 			// //build vertical
 			// vertical[col] = ((vertical[col + counterCol]) + (arr[col] || ''));
 
-
+			//ideally we can move diagonal logic below up here into the main loop
 
 
 
@@ -86,15 +86,22 @@ function crosswordMatrix(arr, word, rowLength, colLength) {
 				curRow--;
 			}
 		}
+		console.log('transition index: ', index);
 		//then shortside logic (this isn't working)
-		for(let col=1; col < rowLength -1; col++) {
-			if(col===rowLength -1) {
+		for(let col=1; col <= rowLength -1; col++) {
+			if(col===rowLength -1 && curRow === rowLength) {
 				upright[upright.length-1] = newMatrix[rowLength-1][colLength-1];
 			}
+
 			curCol = col;
-			curRow = rowLength - 1;
-			while(curCol!==rowLength-1) {
-				upright[index] = (upright[index] || '') + newMatrix[curRow][curCol];
+			curRow = rowLength;
+			while(curCol<=rowLength-1) {
+				console.log('***index: ', index);
+				console.log('[curRow][curCol]: ',curRow, curCol, newMatrix[curRow][curCol]);
+				upright[index] =
+														// (upright[index] || '') +
+													newMatrix[curRow][curCol];
+				console.log('upright[index]: ', upright[index], index);
 				index++;
 				curCol++;
 				curRow--;
@@ -135,8 +142,8 @@ function crosswordMatrix(arr, word, rowLength, colLength) {
 			wordcount++;
 			found = true;
 		}
-		console.log('word: ', word);
-		console.log('elem: ', elem);
+		// console.log('word: ', word);
+		// console.log('elem: ', elem);
 	}
 	console.log('wordCheck: ', wordCheck);
 	console.log('wordcount: ', wordcount);

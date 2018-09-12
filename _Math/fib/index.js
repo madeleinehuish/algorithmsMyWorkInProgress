@@ -41,13 +41,14 @@
 
 // //recursive solution is O(2^n), exponential, much less efficient than the iterative solution below
 function slowfib(n) {
-	if (n <= 1) {
+	if (n < 2) {
 		return n;
 	}
 
 	return slowfib(n-1) + slowfib(n-2);
 }
 
+//iterative solution
 //linear runtime
 function fib(n) {
 	const result = [0,1];
@@ -61,10 +62,11 @@ function fib(n) {
 	// return result; //returns whole array
 }
 
+//this is a linear runtime as well O(n)
 function memoizedFib(n, memo={}) {
 
   if (memo[n]) return memo[n];
-  if (n <= 1) return n;
+  if (n < 2) return n;
 
   return memo[n] = memoizedFib(n - 1, memo) + memoizedFib(n - 2, memo);
 }

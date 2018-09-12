@@ -1,29 +1,6 @@
 //to work on: find dupes in string
 
 
-// //this one finds amount of all duplicates in a given array (from stack overflow)
-let duparr = [1, 3, 3, 4, 200, 4, 25, 78, 3, 100, 2];
-
-function finddupes(arr) {
-    let a = [], b = [], prev;
-
-    arr.sort();
-    for ( var i = 0; i < arr.length; i++ ) {
-        if ( arr[i] !== prev ) {
-            a.push(arr[i]);
-            b.push(1);
-        } else {
-            b[b.length-1]++;
-        }
-        prev = arr[i];
-    }
-
-    return [a, b];
-}
-
-finddupes(duparr)
-
-
 //finds number of dupes and lists them out by key(amount over 1)
 const elements = ["apple", "apple", "orange", "apple", "banana", "orange"];
 
@@ -144,3 +121,26 @@ module.exports = { areThereAnyDupes,
                    findLastNonRepeatingCharacter,
                    findTotalNumberOfDupes
                  };
+
+
+// //this one finds amount of all duplicates in a given array (from stack overflow)
+let duparr = [1, 3, 3, 4, 200, 4, 25, 78, 3, 100, 2];
+
+function finddupes(arr) {
+   let a = [], b = [], prev;
+
+   arr.sort();
+   for ( var i = 0; i < arr.length; i++ ) {
+       if ( arr[i] !== prev ) {
+           a.push(arr[i]);
+           b.push(1);
+       } else {
+           b[b.length-1]++;
+       }
+       prev = arr[i];
+   }
+
+   return [a, b];
+}
+
+finddupes(duparr)

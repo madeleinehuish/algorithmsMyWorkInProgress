@@ -9,6 +9,19 @@ function whitespace1(str) {
 					  .join(' ');
 }
 
+// //log version
+// function whitespace1(str) {
+//
+// 	let arr = str.trim()
+// 					  .split(' ');
+//   console.log('arr: ', arr);
+//
+// 	let filtered = arr.filter(elem => elem!=='');
+//  console.log('filtered: ', filtered);
+//
+//   return filtered.join(' ');
+// }
+
 //regex solution
 function whitespace2(str) {
 //	\s matches all whitespace characters, and + for match one or more
