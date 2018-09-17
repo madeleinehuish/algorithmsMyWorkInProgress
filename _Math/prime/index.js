@@ -1,5 +1,19 @@
 // //prime number is greater than one and only divisible by itself and 1
 
+//this one returns an array of all prime factors of a given number
+function getAllFactorsFor(remainder) {
+    var factors = [], i;
+
+    for (i = 2; i <= remainder; i++) {
+        while ((remainder % i) === 0) {
+            factors.push(i);
+            remainder /= i;
+        }
+    }
+
+    return factors;
+}
+
 //solution #1
 //this solution is not as efficient when combined with sieveOfEratosthenes
 function isPrime(num) {
@@ -36,6 +50,8 @@ const primesOptimal = number => {
         []
     );
 };
+
+
 
 module.exports = { isPrime, sieveOfEratosthenes, primesOptimal };
 

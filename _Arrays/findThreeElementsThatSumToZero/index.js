@@ -54,7 +54,7 @@ function getPairsCountStripDupes(arr, sum) {
 	return doubleCount/2;
 }
 
-//this one returns the pairs
+//this one returns the pairs but doesn't handle duplicates well (ex/ ([5, 5, 5, 3, 7, 7, 3], 10)))
 //from https://medium.com/siliconwat/algorithms-in-javascript-b0bed68f4038
 const twoSum = (array, sum) => {
     const pairs = [];
@@ -64,10 +64,32 @@ const twoSum = (array, sum) => {
         const part2 = sum - part1;
         if (store.indexOf(part2) !== -1) pairs.push([part1, part2]);
         store.push(part1);
+
     }
 
     return pairs;
 };
 
+// this function will return all pairs including dupes and can also return the amount of duped and non-duped pairs
+function getPairsIncludingDupes(arr, sum) {
+	let hashMap = {};
+	let pairs = [];
+	for(let i=0; i < arr.length; i++) {
+		hashMap[arr[i]] = (hashMap[arr[i]] || 0) + 1;
+	}
+	let twice_count = 0;
+	for(let elem of arr) {
+		if(hashMap[sum - elem]) {
+			twice_count++;
+			pairs.push([elem, sum - elem])
+		}
+		if(sum-elem === elem) twice_count--;
+	}
+	console.log('pairs: ', pairs); //this gives an array of all the pairs dupes included
+  console.log('twice_count/2: ', twice_count/2); //this yields the amount of pairs non-dupe
+  console.log('pairs.length: ', pairs.length); //this yields the amount of pairs duped
+	return twice_count/2;
+}
 
-module.exports = { findThreeNumbers, getPairsCount, getPairsCountStripDupes };
+
+module.exports = { findThreeNumbers, getPairsCount, getPairsCountStripDupes, twoSum };

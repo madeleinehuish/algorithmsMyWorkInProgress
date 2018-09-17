@@ -1,5 +1,9 @@
-//to work on: find dupes in string
 
+
+//this removes all duplicates
+function stripDuplicatesFromArray(arr) {
+  return [...new Set(arr)];
+}
 
 //finds number of dupes and lists them out by key(amount over 1)
 const elements = ["apple", "apple", "orange", "apple", "banana", "orange"];
@@ -107,11 +111,6 @@ function findLastNonRepeatingCharacter(str) { //this one actually takes an array
     if(counts[char] === 1) return char;
   }
   return null;
-}
-
-//this removes all duplicates
-function stripDuplicatesFromArray(arr) {
-  return [...new Set(arr)];
 }
 
 module.exports = { areThereAnyDupes,

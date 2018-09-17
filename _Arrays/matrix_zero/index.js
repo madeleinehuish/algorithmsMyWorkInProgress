@@ -1,21 +1,31 @@
-function matrixZero(grid) {
+//take in an array of arrays as matrix. if a row or column has a zero, that whole row or column zeroes out
+//is there a more optimal solution? this is my first brute force attempt...
+function matrixZero(arr) {
 
-	let rowLength = Math.sqrt(grid.length);
-	let newGrid = new Array(grid.length).fill('x')
+	let newArr = [].concat(arr);
+	let rowLength = arr[0].length;
+	let indices = { rows: [], cols: [] };
 
-	for(let i=0; i < grid.length; i++) {
-		//get current row and columns
-		let row = Math.floor(i / rowLength);
-    let col = i % rowLength;
-		//check if current index has a zero
-		if(grid[i]===[0]){
-			//if it does make all column/rows at current in newgrid a zero. if not, put current index content at new grid index
-			//
+	for(let row=0; row < arr.length; row++) {
+		for(let col=0; col < rowLength; col++) {
+			if(arr[row][col]===0) {
+				indices.rows.push(row);
+				indices.cols.push(col);
+			}
 		}
-
 	}
+	for(let row=0; row < arr.length; row++) {
+		for(let col=0; col < rowLength; col++) {
+				if(indices.rows.includes(row) || indices.cols.includes(col)) {
+					newArr[row][col] = 0;
+				} else {
+					newArr[row][col] = arr[row][col];
+				}
+		}
+	}
+	console.log('newArr: ', newArr);
 
-	return newGrid;
+	return newArr;
 }
 
 module.exports = { matrixZero }
