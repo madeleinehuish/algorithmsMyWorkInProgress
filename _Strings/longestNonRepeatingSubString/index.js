@@ -22,11 +22,13 @@ function longestNonRepeatingSubString(str) {
       currArr.push(char)
     }
   }
+
   if(current > max) {
     max = current;
     maxArr = currArr;
 
   }
+
   let maxStr = maxArr.join('');
   console.log('maxStr: ', maxStr);
   return max;

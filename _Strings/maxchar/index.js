@@ -7,16 +7,30 @@
 
 
 
+// function maxChar(str) {
+// 	let chars = {};
+// 	let max = 0;
+// 	let maxChar = '';
+// 	for(let char of str) {
+// 		chars[char] = (chars[char] || 0) + 1;
+// 	}
+//
+// 	for(let char in chars) {
+// 		// console.log('char: ', char);
+// 		if(chars[char] > max) {
+// 			max = chars[char];
+// 			maxChar = char;
+// 		}
+// 	}
+// 	return maxChar;
+// }
+
 function maxChar(str) {
 	let chars = {};
 	let max = 0;
 	let maxChar = '';
 	for(let char of str) {
 		chars[char] = (chars[char] || 0) + 1;
-	}
-
-	for(let char in chars) {
-		// console.log('char: ', char);
 		if(chars[char] > max) {
 			max = chars[char];
 			maxChar = char;

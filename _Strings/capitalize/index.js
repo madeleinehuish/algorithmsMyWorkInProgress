@@ -15,7 +15,7 @@ console.log('capitalized: ', caps);
 function capitalize(sentence) {
   return sentence.split(' ')
                  .map(elem =>{
-                    return elem[0].toUpperCase() + elem.substr(1); //can also use elem.slice(1)
+                    return elem[0].toUpperCase() + elem.substring(1); //can also use elem.slice(1)
                   })
                   .join(' ');
 }

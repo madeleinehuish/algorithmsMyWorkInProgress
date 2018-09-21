@@ -19,9 +19,9 @@
 // 	// }
 // })
 
-function isSubset(arr, sub) { //maybe try this with a Map? or a Set?
+function isSubset(arr, sub) {
 	let arrMap = {};
-	let subMap = {};
+	// let subMap = {};
 
 	arr.forEach(elem => {
 		arrMap[elem] = (arrMap[elem] || 0) + 1;
@@ -35,16 +35,18 @@ function isSubset(arr, sub) { //maybe try this with a Map? or a Set?
 
 }
 
-// //doesn't work
+//this also works
 // function isSubset(arr, sub) {
-// 	let arrSet = new Set(arr);
-// 	console.log('arr: ', arr, ', sub: ', sub);
-// 	sub.forEach(elem => {
-// 		if(!arrSet.has(elem)) {
-// 			console.log('elem: ')
-// 			return false;
-// 		}
-// 	})
+// 	let arrSet = new Set();
+//
+// 	for(let char of arr) {
+// 		arrSet.add(char);
+// 	}
+//
+// 	for(let elem of sub) {
+// 		if(!arrSet.has(elem)) return false;
+// 	}
+//
 // 	return true;
 // }
 
@@ -73,3 +75,51 @@ function isSubsetDupsPossible(arr, sub) {
 }
 
 module.exports = { isSubset, isSubsetDupsPossible };
+
+
+//Using Set() in ES6 (from mozilla docs)
+
+function isSuperset(set, subset) {
+    for (var elem of subset) {
+        if (!set.has(elem)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function union(setA, setB) {
+    var _union = new Set(setA);
+    for (var elem of setB) {
+        _union.add(elem);
+    }
+    return _union;
+}
+
+function intersection(setA, setB) {
+    var _intersection = new Set();
+    for (var elem of setB) {
+        if (setA.has(elem)) {
+            _intersection.add(elem);
+        }
+    }
+    return _intersection;
+}
+
+function difference(setA, setB) {
+    var _difference = new Set(setA);
+    for (var elem of setB) {
+        _difference.delete(elem);
+    }
+    return _difference;
+}
+
+//Examples
+var setA = new Set([1, 2, 3, 4]),
+    setB = new Set([2, 3]),
+    setC = new Set([3, 4, 5, 6]);
+
+isSuperset(setA, setB); // => true
+union(setA, setC); // => Set [1, 2, 3, 4, 5, 6]
+intersection(setA, setC); // => Set [3, 4]
+difference(setA, setC); // => Set [1, 2]

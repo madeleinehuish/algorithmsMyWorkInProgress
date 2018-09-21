@@ -19,6 +19,7 @@ const caesarCipher = (string, offset) => {
         console.log('index: ', index);
         if (index > 25) index -= 26;
         if (index < 0) index += 26;
+        console.log('index modified: ', index);
 
         output +=
             string[i] === string[i].toUpperCase()

@@ -1,4 +1,4 @@
-/* We have a robot that starts in the upper right hand corner of a grid (0, 0) and can move right and down. Some cells though are blocked (0, which is falsy) and can't be traversed. Come up with a path to get the robot to the bottom right. */
+/* We have a robot that starts in the upper left hand corner of a grid (0, 0) and can move right and down. Some cells though are blocked (0, which is falsy) and can't be traversed. Come up with a path to get the robot to the bottom right. */
 
 // We can work backwards and use recursion to go from the end to the start
 // You can use memoization if you want to avoid duplicate work
@@ -7,17 +7,17 @@
 
 //after looking through CTCI i'm thinking maybe a straightup function with extra parameters for path and also failpoints
 
-
+//path input only necessary if you want to return the path
 function findPath(maze, row, col, path=[]) {
   if(!maze[row][col]) { //if the number at current row/col is 0 then return false
     return false
   };
 
   let validPath = false;
-  let lastRow = maze[0].length - 1;
-  let lastCol = maze.length - 1;
+  let lastRow = maze.length - 1;
+  let lastCol = maze[0].length - 1;
 
-  let mazeEnd = lastRow === row && lastCol === col;
+  let mazeEnd = (lastRow === row && lastCol === col);
   // console.log('lastRow: ', lastRow);
   // console.log('lastCol: ', lastCol);
   // console.log('maze[row][col]: ' , maze[row][col]);
@@ -26,7 +26,7 @@ function findPath(maze, row, col, path=[]) {
 
   if (mazeEnd || findPath(maze, row, col + 1, path) || findPath(maze, row + 1, col, path)) {
     validPath = true;
-    path.push(row + "," + col);
+    path.push(row + "," + col); //this line isn't necessary for boolean check on valid path but nice if you want to return path
   }
   // console.log('path: ', path);
   return validPath;

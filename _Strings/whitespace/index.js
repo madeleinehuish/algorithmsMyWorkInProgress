@@ -7,6 +7,7 @@ function whitespace1(str) {
 					  .split(' ')
 					  .filter(elem => elem!=='')
 					  .join(' ');
+
 }
 
 // //log version

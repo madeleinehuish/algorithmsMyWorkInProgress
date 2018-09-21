@@ -27,8 +27,8 @@ function quickSort(arr) {
 
 module.exports = { sum, quickSort };
 
-// // //this version of quickSort uses a random pivot
-// // //also see https://stackoverflow.com/questions/31332438/implementing-quicksort-in-javascript-with-a-random-pivot
+// //this version of quickSort uses a random pivot
+// //also see https://stackoverflow.com/questions/31332438/implementing-quicksort-in-javascript-with-a-random-pivot
 // function quickSort(arr) {
 // 	if(arr.length < 2) return arr;
 //

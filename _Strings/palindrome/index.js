@@ -22,9 +22,7 @@
 
 
 function palindrome(str) {
-	let reversed = str.split('').reduce((acc, current) => {
-		return current + acc;
-	})
+	let reversed = str.split('').reduce((acc, current) => current + acc)
 
 	return str === reversed;
 }
