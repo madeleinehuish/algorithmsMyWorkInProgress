@@ -1,36 +1,8 @@
-let matrix1 = [
-	[ 1,  2,  3,  4,  5],
-	[ 6,  7,  8,  9 ,10],
-	[11, 12, 13, 14, 15],
-	[16, 17, 18, 19, 20],
-	[21, 22, 23, 24, 25]
-]
 
-let solutionUpRightMatrix1 = [
-	[1],
-	[6,  2],
-	[11, 7, 3],
-	[16, 12, 8, 4],
-	[21, 17, 13, 9, 5],
-	[22, 18, 14, 10],
-	[23, 19, 15],
-	[24, 20],
-	[25]
-]
 
-let solutionDownRightMatrix = [
-	[5],
-	[4, 10],
-	[3, 9, 15],
-	[2, 8, 14, 20],
-	[1, 7, 13, 19, 25],
-	[6, 12, 18, 24],
-	[11, 17, 23],
-	[16, 22],
-	[21]
-]
 
-function diagonal(arr) {
+
+function diagonalUpRight(arr) {
 	const rowLength = arr[0].length;
 	const colLength = arr.length;
 	const diagArrLength = rowLength + colLength - 1;
@@ -43,11 +15,11 @@ function diagonal(arr) {
 	}
 
 	//set first and last elements of diagonalArr
-	diagonalArr[0][0] = arr[0][0];
+	// diagonalArr[0][0] = arr[0][0];
 	// diagonalArr[diagArrLength-1][0] = arr[rowLength-1][colLength-1];
 
 	//this will solve the first half of diagonals (up right diagonal)
-	for(let diagCurrRow=1; diagCurrRow <= diagArrMidRow; diagCurrRow++) {
+	for(let diagCurrRow=0; diagCurrRow <= diagArrMidRow; diagCurrRow++) {
 		let row = diagCurrRow;
 		for(let diagCurrCol=0; diagCurrCol <= diagCurrRow; diagCurrCol++) {
 			let col = diagCurrCol;
@@ -66,7 +38,51 @@ function diagonal(arr) {
 		for(let diagCurrCol = 0; diagCurrCol < diagCurrRowLength; diagCurrCol++) {
 			diagonalArr[diagCurrRow][diagCurrCol] = arr[row][col];
 			row--;
-      col++
+      col++;
+		}
+    columnCounter++;
+		diagCurrRowLength--;
+		console.log('diagonalArr: ', diagonalArr)
+	}
+
+	return diagonalArr;
+}
+
+module.exports = diagonalUpRight;
+
+function diagonalDownRight(arr) {
+	const rowLength = arr[0].length;
+	const colLength = arr.length;
+	const diagArrLength = rowLength + colLength - 1;
+	const diagArrMidRow = Math.floor(diagArrLength/2);
+
+	//prepare diagonalArr
+	let diagonalArr = [];
+	for(let i=0; i < diagArrLength; i++) {
+		diagonalArr.push([]);
+	}
+
+	//this will solve the first half of diagonals (down right diagonal)
+	for(let diagCurrRow=0; diagCurrRow <= diagArrMidRow; diagCurrRow++) {
+		let row = rowLength - diagCurrRow - 1;
+		for(let diagCurrCol=0; diagCurrCol <= diagCurrRow; diagCurrCol++) {
+			let col = diagCurrCol;
+			diagonalArr[diagCurrRow][diagCurrCol] = arr[row][col];
+			row--;
+			console.log('diagonalArr: ', diagonalArr)
+		}
+	}
+
+	//this will solve the second half of the diagonals (up right diagonal)
+	let diagCurrRowLength = rowLength -1;
+  let columnCounter = 1;
+	for(let diagCurrRow = diagArrMidRow + 1; diagCurrRow < diagArrLength; diagCurrRow++) {
+		let row = colLength-1;
+		let col=columnCounter;
+		for(let diagCurrCol = 0; diagCurrCol < diagCurrRowLength; diagCurrCol++) {
+			diagonalArr[diagCurrRow][diagCurrCol] = arr[row][col];
+			row--;
+      col++;
 		}
     columnCounter++;
 		diagCurrRowLength--;
