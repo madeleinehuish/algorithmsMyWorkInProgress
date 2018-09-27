@@ -44,9 +44,9 @@ function diagonal(arr) {
 
 	//set first and last elements of diagonalArr
 	diagonalArr[0][0] = arr[0][0];
-	diagonalArr[diagArrLength-1][0] = arr[rowLength-1][colLength-1];
+	// diagonalArr[diagArrLength-1][0] = arr[rowLength-1][colLength-1];
 
-	//this will solve the first half of diagonals
+	//this will solve the first half of diagonals (up right diagonal)
 	for(let diagCurrRow=1; diagCurrRow <= diagArrMidRow; diagCurrRow++) {
 		let row = diagCurrRow;
 		for(let diagCurrCol=0; diagCurrCol <= diagCurrRow; diagCurrCol++) {
@@ -55,6 +55,22 @@ function diagonal(arr) {
 			row--;
 			console.log('diagonalArr: ', diagonalArr)
 		}
+	}
+
+	//this will solve the second half of the diagonals (up right diagonal)
+	let diagCurrRowLength = rowLength -1;
+  let columnCounter = 1;
+	for(let diagCurrRow = diagArrMidRow + 1; diagCurrRow < diagArrLength; diagCurrRow++) {
+		let row = colLength-1;
+		let col=columnCounter;
+		for(let diagCurrCol = 0; diagCurrCol < diagCurrRowLength; diagCurrCol++) {
+			diagonalArr[diagCurrRow][diagCurrCol] = arr[row][col];
+			row--;
+      col++
+		}
+    columnCounter++;
+		diagCurrRowLength--;
+		console.log('diagonalArr: ', diagonalArr)
 	}
 }
 
