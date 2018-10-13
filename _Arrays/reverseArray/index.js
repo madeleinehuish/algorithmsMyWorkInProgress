@@ -15,9 +15,7 @@
 // }
 
 function reverseArray(arr) {
-	return arr.reduce((acc, cur) => {
-		return [cur, ...acc];
-	}, [])
+	return arr.reduce((acc, cur) => [cur, ...acc], [])
 }
 
 // function reverseArray(arr) {

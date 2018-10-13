@@ -32,9 +32,7 @@
 
 // // elegant using split and reduce
 function reverse(str) {
-	return str.split('').reduce((acc, current) => {
-		return current + acc;
-	})
+	return str.split('').reduce((acc, current) => current + acc)
 }
 
 module.exports = reverse;

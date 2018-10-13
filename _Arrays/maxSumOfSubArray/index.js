@@ -10,6 +10,7 @@ function maxSum(arr) {
 		if(currentMaxSum > globalMaxSum) {
 			globalMaxSum = currentMaxSum;
 		}
+		console.log('i: ', i, arr[i], ' cur: ', currentMaxSum, ' glob max: ', globalMaxSum);
 	}
 
 	return globalMaxSum;

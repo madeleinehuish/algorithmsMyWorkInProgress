@@ -2,16 +2,15 @@
 //this actually might be just checking for substring not permutation
 function isPermutation(str, sub) { //this is similar to isSubset in array methods
 
-	let arrMap = {};
+	let stringMap = {};
 	let subMap = {};
-	let arr = str.split('');
 
-	arr.forEach(elem => {
-		arrMap[elem] = (arrMap[elem] || 0) + 1;
-	})
+	for(let char of str) {
+		stringMap[char] = (stringMap[char] || 0) + 1;
+	}
 
 	for(let elem of sub) {
-		if(!arrMap[elem]) return false;
+		if(!stringMap[elem]) return false;
 	}
 
 	return true;
