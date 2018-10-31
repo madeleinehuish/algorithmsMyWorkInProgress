@@ -1,4 +1,5 @@
 const {
+        stripDuplicatesFromArray,
         areThereAnyDupes,
         findFirstRepeatingCharacter,
         findLastRepeatingCharacter,
@@ -24,6 +25,10 @@ test('findFirstRepeatingCharacter function exists', () => {
 
 test('findFirstNonRepeatingCharacter function exists', () => {
   expect(typeof findFirstNonRepeatingCharacter).toEqual('function');
+});
+
+test('stripDuplicatesFromArray function exists', () => {
+  expect(typeof stripDuplicatesFromArray).toEqual('function');
 });
 
 test('duplicates found in duplicate array', () => {
@@ -65,4 +70,9 @@ test('Check last non-repeating character shows true', () => {
 
 test('Check last non-repeating character shows null if no repeating', () => {
   expect(findLastRepeatingCharacter([1, 2, 3, 4, 5, 7, 19, 20])).toEqual(null);
+})
+
+test('srips duplicates from arr', () => {
+  console.log('test: ', stripDuplicatesFromArray([1, 2, 3, 3, 4, 4, 3, 5, 6, 7, 1, 7]));
+  expect(stripDuplicatesFromArray([1, 2, 3, 3, 4, 4, 3, 5, 6, 7, 1, 7])).toEqual([1, 2, 3, 4, 5, 6, 7])
 })

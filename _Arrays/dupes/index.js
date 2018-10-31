@@ -118,7 +118,8 @@ module.exports = { areThereAnyDupes,
                    findLastRepeatingCharacter,
                    findFirstNonRepeatingCharacter,
                    findLastNonRepeatingCharacter,
-                   findTotalNumberOfDupes
+                   findTotalNumberOfDupes,
+                   stripDuplicatesFromArray
                  };
 
 

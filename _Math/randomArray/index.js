@@ -9,7 +9,7 @@ function shuffle(num) {
 
 	// http://stackoverflow.com/questions/962802#962890
 	function shuf(array) {
-	  var tmp, current, top = array.length;
+	  let tmp, current, top = array.length;
 	  if(top) while(--top) {
 	    current = Math.floor(Math.random() * (top + 1));
 	    tmp = array[current];
