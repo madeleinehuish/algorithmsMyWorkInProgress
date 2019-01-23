@@ -18,8 +18,6 @@ function findTotalAmountOfEach(arr) {
 
 findTotalAmountOfEach(elements);
 
-
-
 //this function returns the number of total dupes (over 1)
 function findTotalNumberOfDupes(arr) {
   var totalDupes = 0;

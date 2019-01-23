@@ -3,7 +3,6 @@
 function isPermutation(str, sub) { //this is similar to isSubset in array methods
 
 	let stringMap = {};
-	let subMap = {};
 
 	for(let char of str) {
 		stringMap[char] = (stringMap[char] || 0) + 1;
