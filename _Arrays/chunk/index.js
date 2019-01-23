@@ -9,7 +9,7 @@
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
 function chunk(array, size) { //this is my first attempt on my own :)
-  let times = array.length/size;
+  let times = Math.ceil(array.length/size);
   // console.log('times: ', times);
   let newArr = [];
   for (let i = 0; i < times; i++) {
