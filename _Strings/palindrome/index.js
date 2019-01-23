@@ -28,4 +28,19 @@ function palindrome(str) {
 }
 
 
+//longest palindrome in sentence
+function longestPalindrome(sentence) {
+// your code goes here
+	// split the sentence into words
+	let words = [];
+	let wordArray = sentence.split(‘ ‘);
+	for(let word of wordArray) {
+		if(palindrome(word)) words.push(word);
+	}
+	let
+	return 	words.sort(function(a, b){return a.length-b.length}).pop();
+}
+
+
+
 module.exports = palindrome;

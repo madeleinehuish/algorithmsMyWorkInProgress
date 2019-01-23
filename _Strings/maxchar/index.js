@@ -39,6 +39,21 @@ function maxChar(str) {
 	return maxChar;
 }
 
+// //basic character frequency in string only including letters (A and a count the same)
+// function charFreq(sentence) {
+//
+//   if(typeof sentence !== 'string') return -1;
+//   let charMap={};
+//   for(let char of sentence.toLowerCase()) {
+//     if(char.charCodeAt() > 96 && char.charCodeAt() < 123) {
+//       charMap[char] = (charMap[char] || 0) + 1;
+//     }
+//   }
+//
+//   return charMap
+// }
+
+
 //one way we could get array of maxValues that are the same is to record max and then loop through one more time to
 //grab all chars where maxChar[char] === max
 

@@ -8,6 +8,8 @@
 // and they cannot be used as constructors.
 
 
+
+
 class test {
   constructor(data) {
     this.data = data;

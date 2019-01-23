@@ -35,6 +35,7 @@ function longestNonRepeatingSubString(str) {
 }
 
 
+
 // //this solution will return the actual string with max length
 // im not sure if it works. i've since added tests which forced me to rewrite the code above so this might no longer be valid
 // function longestNonRepeatingSubString(str) {

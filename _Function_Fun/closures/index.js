@@ -102,3 +102,46 @@ counter.add();
 counter.add();
 counter.add();
 counter.value();
+
+
+//another example of a closure with iify
+
+const person = (function() {
+  let age = 25;
+
+  return {
+    name: "Nicholas",
+    getAge: function() {
+      return age;
+    },
+    growOlder: function() {
+      age++;
+    }
+  };
+})();
+
+console.log(person.name);     // "Nicholas"
+console.log(person.getAge()); // 25
+
+person.age = 100;
+console.log(person.age)   // 25
+
+person.growOlder();
+console.log(person.getAge())  //26
+
+
+
+//another example
+function Person(name) {
+  let age = 25;
+  this.name = name;
+  this.getAge = function() {
+    return age;
+  }
+}
+
+const person = new Person('Madeleine');
+
+person.name  // "Madeleine"
+person.getAge()  // 25
+person.age  // undefined
