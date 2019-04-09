@@ -1,67 +1,84 @@
-// //this is my solution which I came up with on my own using Set()
 
-function longestNonRepeatingSubString(str) {
-  let max = current = 0;
-  let currArr = [];
-  let maxArr = [];
-  let charSet = new Set();
 
-  for(let char of str) {
-    if(charSet.has(char)) {
-      if(current > max) {
-        max = current;
-        maxArr = currArr;
-        maxArr.push(char);
-        current = 1;
-        currArr = [];
-      }
-    } else {
-      charSet.add(char);
-      current++;
-      console.log('char: ', char);
-      currArr.push(char)
+const longestNonRepeatingSubString = (str) => {
+	if(str.length < 2) {
+			return str.length;
+	}
+
+    let maxLen = 0;
+    let curLen = 0;
+    let hashMap = {};
+
+    for(let i = 0; i < str.length;  i++) {
+        if(!(str[i] in hashMap)) {
+            curLen ++;
+        } else {
+            curLen = Math.min(i - hashMap[str[i]], curLen + 1);
+        }
+        maxLen = Math.max(maxLen, curLen);
+        hashMap[str[i]] = i;
     }
-  }
+    return maxLen;
+};
 
-  if(current > max) {
-    max = current;
-    maxArr = currArr;
+// //crazy reduce solution I came across on leetcode
+// const longestNonRepeatingSubString = (s) => {
+//     let longestCount = 0;
+//     return Math.max(Array.from(s).reduce((acc, cur) => {
+//         if (acc.indexOf(cur) !== -1) {
+//           longestCount = Math.max(acc.length, longestCount);
+//           acc = acc.slice(acc.indexOf(cur) + 1);  // If we found duplicated item, only remove all items up to this duplicated one
+//         }
+//         acc.push(cur);
+//         return acc;
+//       }, []).length, longestCount);
+// 	  // The last Math.max(...) is to capture the case like single character string and longest substring is at the end of input
+// };
 
-  }
+// //this is my solution which I came up with on my own using Set() , it doesn't work for last case
 
-  let maxStr = maxArr.join('');
-  console.log('maxStr: ', maxStr);
-  return max;
-}
-
-
-
-// //this solution will return the actual string with max length
-// im not sure if it works. i've since added tests which forced me to rewrite the code above so this might no longer be valid
 // function longestNonRepeatingSubString(str) {
-//   let max = currentSubStrLength = 0;
-//   let charMap = new Map();
-//   let maxStr = '';
+//   let max = 0;
+//   let current = 0;
+//
+//   let currArr = [];
+//   let maxArr = [];
+//   let charSet = new Set();
 //
 //   for(let char of str) {
-//
-//     if(charMap.has(char)) {
-//       if(currentSubStrLength > max) {
-//         max = currentSubStrLength;
+//     if(charSet.has(char)) {
+//       if(current > max) {
+//         max = current;
+//         maxArr = currArr;
+//         maxArr.push(char);
+//         current = 1;
+//         currArr = [];
 //       }
-//       maxStr='';
-//       currentSubStrLength = 0;
+//     } else {
+//       charSet.add(char);
+//       current++;
+//       console.log('char: ', char);
+//       currArr.push(char)
 //     }
-//     currentSubStrLength++;
-//     maxStr = maxStr + char;
-//     console.log('maxStr: ', maxStr);
-//     charMap.set(char, charMap.get(char)+1 || 0)
 //   }
 //
-//   return maxStr;
+//   if(current > max) {
+//     max = current;
+//     maxArr = currArr;
+//
+//   }
+//
+//   let maxStr = maxArr.join('');
+//   console.log('maxStr: ', maxStr);
+//   console.log('max: ', max);
+//   return max;
 // }
 
-//https://gist.github.com/codediodeio/24319b9b17cba57e7a34002228abaaaf
+
+
+
+
+// //https://gist.github.com/codediodeio/24319b9b17cba57e7a34002228abaaaf
 // var longestNonRepeatingSubString = function(s) {
 //
 //     let map = {}

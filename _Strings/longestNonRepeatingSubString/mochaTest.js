@@ -7,11 +7,13 @@ let testData1 = 'abcabcbb';
 let testData2 = 'bbbbb';
 let testData3 = 'pwwkew';
 let testData4 = 'abccdefgh';
+let testData5 = 'dvdf'
 
 let solution1 = 3;
 let solution2 = 1;
 let solution3 = 3;
-let solution4 = 6
+let solution4 = 6;
+let solution5 = 2;
 
 // console.log(longestNonRepeatingSubString(testData1));
 
